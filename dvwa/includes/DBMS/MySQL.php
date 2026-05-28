@@ -39,7 +39,7 @@ if( !@((bool)mysqli_query($GLOBALS["___mysqli_ston"], "USE " . $_DVWA[ 'db_datab
 	dvwaPageReload();
 }
 
-$create_tb = "CREATE TABLE users (user_id int(6),first_name varchar(15),last_name varchar(15), user varchar(15), password varchar(32),avatar varchar(70), last_login TIMESTAMP, failed_login INT(3), PRIMARY KEY (user_id));";
+$create_tb = "CREATE TABLE users (user_id int(6),first_name varchar(15),last_name varchar(15), user varchar(15), password varchar(255),avatar varchar(70), last_login TIMESTAMP, failed_login INT(3), PRIMARY KEY (user_id));";
 if( !mysqli_query($GLOBALS["___mysqli_ston"],  $create_tb ) ) {
 	dvwaMessagePush( "Table could not be created<br />SQL: " . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) );
 	dvwaPageReload();
@@ -52,11 +52,11 @@ $base_dir= str_replace ("setup.php", "", $_SERVER['SCRIPT_NAME']);
 $avatarUrl  = $base_dir . 'hackable/users/';
 
 $insert = "INSERT INTO users VALUES
-	('1','admin','admin','admin',MD5('password'),'{$avatarUrl}admin.jpg', NOW(), '0'),
-	('2','Gordon','Brown','gordonb',MD5('abc123'),'{$avatarUrl}gordonb.jpg', NOW(), '0'),
-	('3','Hack','Me','1337',MD5('charley'),'{$avatarUrl}1337.jpg', NOW(), '0'),
-	('4','Pablo','Picasso','pablo',MD5('letmein'),'{$avatarUrl}pablo.jpg', NOW(), '0'),
-	('5','Bob','Smith','smithy',MD5('password'),'{$avatarUrl}smithy.jpg', NOW(), '0');";
+	('1','admin','admin','admin','\$2y\$12\$rf2N1mIKbZu9NZWRzY7FfOYtqLGCNB8aw78xkGGHQyP5ZY2LJIs6u','{$avatarUrl}admin.jpg', NOW(), '0'),
+	('2','Gordon','Brown','gordonb','\$2y\$12\$JVFYv1SekB3U8vyzNfAxU.PXXF1vEFhR6v.9vDSe9q2eoTMEyrpGC','{$avatarUrl}gordonb.jpg', NOW(), '0'),
+	('3','Hack','Me','1337','\$2y\$12\$CiOXblIO7H8Vd2eRRQAmIO6VDxVuqSGiTxs6zJ75juL.rQWNAqxby','{$avatarUrl}1337.jpg', NOW(), '0'),
+	('4','Pablo','Picasso','pablo','\$2y\$12\$S9O/dhbLvIDuMOIMXj2M4uf/Cjd3rzUvhfoHIqhEVuR7YpX6fvGk2','{$avatarUrl}pablo.jpg', NOW(), '0'),
+	('5','Bob','Smith','smithy','\$2y\$12\$E.1K4MDsXvuei096MM.oHOQtYMEmGJmAvIoRaFOjm6K3t6U24HXLe','{$avatarUrl}smithy.jpg', NOW(), '0');";
 if( !mysqli_query($GLOBALS["___mysqli_ston"],  $insert ) ) {
 	dvwaMessagePush( "Data could not be inserted into 'users' table<br />SQL: " . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) );
 	dvwaPageReload();

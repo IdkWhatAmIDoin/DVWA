@@ -58,11 +58,11 @@ $stripPos = strpos( $baseUrl, 'dvwa/setup.php' );
 $baseUrl = substr( $baseUrl, 0, $stripPos ).'dvwa/hackable/users/';
 
 $insert = "INSERT INTO users VALUES
-	('1','admin','admin','admin',MD5('password'),'{$baseUrl}admin.jpg'),
-	('2','Gordon','Brown','gordonb',MD5('abc123'),'{$baseUrl}gordonb.jpg'),
-	('3','Hack','Me','1337',MD5('charley'),'{$baseUrl}1337.jpg'),
-	('4','Pablo','Picasso','pablo',MD5('letmein'),'{$baseUrl}pablo.jpg'),
-	('5','bob','smith','smithy',MD5('password'),'{$baseUrl}smithy.jpg');";
+	('1','admin','admin','admin','\$2y\$12\$rf2N1mIKbZu9NZWRzY7FfOYtqLGCNB8aw78xkGGHQyP5ZY2LJIs6u','{$baseUrl}admin.jpg'),
+	('2','Gordon','Brown','gordonb','\$2y\$12\$JVFYv1SekB3U8vyzNfAxU.PXXF1vEFhR6v.9vDSe9q2eoTMEyrpGC','{$baseUrl}gordonb.jpg'),
+	('3','Hack','Me','1337','\$2y\$12\$CiOXblIO7H8Vd2eRRQAmIO6VDxVuqSGiTxs6zJ75juL.rQWNAqxby','{$baseUrl}1337.jpg'),
+	('4','Pablo','Picasso','pablo','\$2y\$12\$S9O/dhbLvIDuMOIMXj2M4uf/Cjd3rzUvhfoHIqhEVuR7YpX6fvGk2','{$baseUrl}pablo.jpg'),
+	('5','Bob','Smith','smithy','\$2y\$12\$E.1K4MDsXvuei096MM.oHOQtYMEmGJmAvIoRaFOjm6K3t6U24HXLe','{$baseUrl}smithy.jpg');";
 if( !pg_query( $insert ) ) {
 	dvwaMessagePush( "Data could not be inserted into 'users' table<br />SQL: " . pg_last_error() );
 	dvwaPageReload();
